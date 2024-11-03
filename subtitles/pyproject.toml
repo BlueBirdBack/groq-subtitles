@@ -1,0 +1,64 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "groq-subtitles"
+version = "0.1.0"
+description = "Batch video subtitle generation using Groq Whisper API"
+authors = ["Avery <avery@bluebirdback.com>"]
+readme = "README.md"
+packages = [{include = "subtitles"}]
+repository = "https://github.com/BlueBirdBack/groq-subtitles"
+keywords = ["groq", "whisper", "subtitles", "speech-to-text", "video"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Multimedia :: Video",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-ffmpeg = "^2.0.12"
+rich = "^13.9.4"
+python-dotenv = "^1.0.1"
+aiohttp = "^3.10.10"
+typer = "^0.12.5"
+groq = "^0.11.0"
+
+[tool.poetry.scripts]
+groq-subtitles = "subtitles.cli:app"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+black = "^24.10.0"
+isort = "^5.13.2"
+mypy = "^1.13.0"
+ruff = "^0.7.2"
+
+[tool.ruff]
+select = ["E", "F", "I", "N", "W", "B", "UP"]
+target-version = "py39"
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
